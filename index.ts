@@ -14,6 +14,20 @@ server.on('request', (request:http.IncomingMessage,response:http.ServerResponse)
         response.end(data.toString())
       })
       break
+    case '/style.css':
+      response.setHeader('Content-type','text/css; charset=utf-8')
+      fs.readFile(p.resolve(publicDir, 'style.css'), (error,data)=>{
+        if(error) throw error;
+        response.end(data.toString())
+      })
+      break
+    case '/index.js':
+      response.setHeader('Content-type','text/javascript; charset=utf-8')
+      fs.readFile(p.resolve(publicDir, 'index.js'), (error,data)=>{
+        if(error) throw error;
+        response.end(data.toString())
+      })
+      break
   }
 
 })
